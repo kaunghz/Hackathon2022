@@ -188,7 +188,9 @@ function runSnapToRoad(path) {
   $.get('https://roads.googleapis.com/v1/snapToRoads', {
     interpolate: true,
     key: apiKey,
-    path: pathValues.join('|')
+    path: pathValues.join('|'),
+    // Kaung updated travel mode to ---> WALKING
+    travelMode: google.maps.TravelMode.WALKING
   }, function(data) {
     processSnapToRoadResponse(data);
     drawSnappedPolyline();
