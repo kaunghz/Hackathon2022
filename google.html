@@ -49,9 +49,9 @@
 
     <script src="https://www.gstatic.com/external_hosted/jquery2.min.js"></script>
     <script
-      src="https://maps.googleapis.com/maps/api/js?libraries=drawing,places&key=YOUR_API_KEY"></script>
+      src="https://maps.googleapis.com/maps/api/js?libraries=drawing,places&key=AIzaSyB7RkITQ2SLbgTx78tuhvigtpPRZh9ImPw"></script>
     <script>
-var apiKey = 'YOUR_API_KEY_HERE';
+var apiKey = 'AIzaSyB7RkITQ2SLbgTx78tuhvigtpPRZh9ImPw';
 
 var map;
 var drawingManager;
@@ -62,7 +62,8 @@ var snappedCoordinates = [];
 function initialize() {
   var mapOptions = {
     zoom: 17,
-    center: {lat: -33.8667, lng: 151.1955,}
+    //-75.157931, 39.945680
+    center: {lat: 39.945680, lng: -75.157931,}
   };
   map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
