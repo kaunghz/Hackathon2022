@@ -47,10 +47,11 @@
       }
     </style>
 
-    <script src="https://www.gstatic.com/external_hosted/jquery2.min.js"></script>
-    <script
+<script src="https://www.gstatic.com/external_hosted/jquery2.min.js"></script>
+<script
       src="https://maps.googleapis.com/maps/api/js?libraries=drawing,places&key=AIzaSyB7RkITQ2SLbgTx78tuhvigtpPRZh9ImPw"></script>
-    <script>
+
+      <script>
 var apiKey = 'AIzaSyB7RkITQ2SLbgTx78tuhvigtpPRZh9ImPw';
 
 var map;
@@ -59,13 +60,61 @@ var placeIdArray = [];
 var polylines = [];
 var snappedCoordinates = [];
 
+// TODO: Kaung updated this function for current location***
 function initialize() {
-  var mapOptions = {
-    zoom: 17,
-    //-75.157931, 39.945680
-    center: {lat: 39.945680, lng: -75.157931,}
-  };
-  map = new google.maps.Map(document.getElementById('map'), mapOptions);
+  // Get user current location
+  x = navigator.geolocation;
+  x.getCurrentPosition (success, failure);
+
+  function success (position) {
+    var curLat = position.coords.latitude;
+    var curLong = position.coords.longitude;
+    var coords = new google.maps.LatLng(curLat, curLong);
+
+    var mapOptions = {
+      zoom: 17,
+      // center at currenct coordinates
+      center: coords
+    };
+    map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+    // SHOW current location on map
+    // Inner circle of current location
+    const innericon = {
+      path: "M-20,0a20,20 0 1,0 40,0a20,20 0 1,0 -40,0",
+      fillColor: "blue",
+      fillOpacity: 1,
+      strokeWeight: 0,
+      rotation: 0,
+      scale: 0.5,
+    };
+    var innermarker = new google.maps.Marker({
+      map:map,
+      position:coords,
+      icon: innericon,
+      title: "my Current location",
+      draggable: false,
+      
+    });
+    // Outer circle of current lcation
+    const outericon = {
+      path: "M-20,0a20,20 0 1,0 40,0a20,20 0 1,0 -40,0",
+      fillColor: "blue",
+      fillOpacity: 0.2,
+      strokeWeight: 0,
+      rotation: 0,
+      scale: 3,
+    };
+    var outermarker = new google.maps.Marker({
+      map:map,
+      position:coords,
+      icon: outericon,
+      title: "my Current location",
+      draggable: false,
+    });
+  }
+  function failure () {}
+  /// Initialize done ---
 
   // Adds a Places search box. Searching for a place will center the map on that
   // location.
@@ -121,6 +170,7 @@ function initialize() {
     polylines = [];
     return false;
   });
+
 }
 
 // Snap a user-created polyline to roads and draw the snapped path
