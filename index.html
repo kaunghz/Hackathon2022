@@ -14,7 +14,8 @@
   <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
-    <title>Roads API Demo</title>
+    <title>Hackathon22 Map</title>
+    <link rel="icon" href="pics/head_logo.jpg">
     <style>
       html, body, #map {
         height: 100%;
@@ -63,54 +64,57 @@ var snappedCoordinates = [];
 // TODO: Kaung updated this function for current location***
 function initialize() {
   x = navigator.geolocation;
-    x.getCurrentPosition (success, failure);
-  
-    function success (position) {
-      var curLat = position.coords.latitude;
-      var curLong = position.coords.longitude;
-      var coords = new google.maps.LatLng(curLat, curLong);
-  
-      var mapOptions = {
-        zoom: 17,
-        // center at currenct coordinates
-        center: coords
-      };
-      map = new google.maps.Map(document.getElementById('map'), mapOptions);
-  
-      // SHOW current location on map
-      // Inner circle of current location
-      const innericon = {
-        path: "M-20,0a20,20 0 1,0 40,0a20,20 0 1,0 -40,0",
-        fillColor: "blue",
-        fillOpacity: 1,
-        strokeWeight: 0,
-        rotation: 0,
-        scale: 0.5,
-      };
-      var innermarker = new google.maps.Marker({
-        map:map,
-        position:coords,
-        icon: innericon,
-        title: "my Current location",
-        draggable: false,
-        
-      });
-      // Outer circle of current lcation
-      const outericon = {
-        path: "M-20,0a20,20 0 1,0 40,0a20,20 0 1,0 -40,0",
-        fillColor: "blue",
-        fillOpacity: 0.15,
-        strokeWeight: 0,
-        rotation: 0,
-        scale: 3,
-      };
-      var outermarker = new google.maps.Marker({
-        map:map,
-        position:coords,
-        icon: outericon,
-        title: "my Current location",
-        draggable: false,
-      });
+  x.getCurrentPosition (success, failure);
+
+  // if current location succeeds
+  function success (position) {
+    // testing : -75.157931, 39.945680
+    var curLat = position.coords.latitude;
+    var curLong = position.coords.longitude;
+    var coords = new google.maps.LatLng(curLat, curLong);
+
+    var mapOptions = {
+      zoom: 16,
+      // center at currenct coordinates
+      center: coords
+    };
+    map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+    // SHOW current location on map
+    // Inner circle of current location
+    const innericon = {
+      path: "M-20,0a20,20 0 1,0 40,0a20,20 0 1,0 -40,0",
+      fillColor: "green",
+      fillOpacity: 1,
+      strokeWeight: 2,
+      strokeColor: "yellow",
+      rotation: 0,
+      scale: 0.4,
+    };
+    var innermarker = new google.maps.Marker({
+      map:map,
+      position:coords,
+      icon: innericon,
+      title: "my Current location",
+      draggable: false,
+      
+    });
+    // Outer circle of current lcation
+    const outericon = {
+      path: "M-20,0a20,20 0 1,0 40,0a20,20 0 1,0 -40,0",
+      fillColor: "green",
+      fillOpacity: 0.1,
+      strokeWeight: 0.1,
+      rotation: 0,
+      scale: 2.5,
+    };
+    var outermarker = new google.maps.Marker({
+      map:map,
+      position:coords,
+      icon: outericon,
+      title: "my Current location",
+      draggable: false,
+    });
   // Manually updated for cuurent location ENDS here-------------------------
     
   // Adds a Places search box. Searching for a place will center the map on that
@@ -142,9 +146,9 @@ function initialize() {
         ]
       },
       polylineOptions: {
-        strokeColor: 'red',
-        strokeWeight: 2,
-        strokeOpacity: 0.5,
+        strokeColor: "black",
+        strokeWeight: 1.5,
+        strokeOpacity: 0.6,
         sclae: 15
       }
     });
@@ -216,9 +220,9 @@ function processSnapToRoadResponse(data) {
 function drawSnappedPolyline() {
   var snappedPolyline = new google.maps.Polyline({
     path: snappedCoordinates,
-    strokeColor: '#add8e6',
-    strokeWeight: 4,
-    strokeOpacity: 0.9,
+    strokeColor: "green",
+    strokeWeight: 4.5,
+    strokeOpacity: 0.8,
   });
 
   snappedPolyline.setMap(map);
