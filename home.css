@@ -70,8 +70,9 @@ button.start {
 }
 
 .start:hover {
-    border: 1px solid yellow;
+    border: 0px;
     color: yellow;
+    background-color: black;
 }
 
 /* navigation bar style starts here */
