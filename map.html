@@ -1,0 +1,244 @@
+<!--
+  !DOCTYPE
+
+  Team member : Bao, Alim, Kaung, Adam
+  ----------Discolsure of API----------
+  We are using google maps api (snap to roads)
+  Reference https://developers.google.com/maps/documentation/roads/snap
+  Date : 4/5/2022
+-->
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Hackathon22 Map</title>
+    <link rel="icon" href="pics/head_logo.jpg">
+    <style>
+      html, body, #map {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+
+      #panel {
+        position: absolute;
+        top: 5px;
+        left: 50%;
+        margin-left: -180px;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+      }
+
+      #bar {
+        width: 240px;
+        background-color: rgba(255, 255, 255, 0.75);
+        margin: 8px;
+        padding: 4px;
+        border-radius: 4px;
+      }
+
+      #autoc {
+        width: 100%;
+        box-sizing: border-box;
+      }
+    </style>
+
+<script src="https://www.gstatic.com/external_hosted/jquery2.min.js"></script>
+<script
+      src="https://maps.googleapis.com/maps/api/js?libraries=drawing,places&key=AIzaSyB7RkITQ2SLbgTx78tuhvigtpPRZh9ImPw"></script>
+
+      <script>
+var apiKey = 'AIzaSyB7RkITQ2SLbgTx78tuhvigtpPRZh9ImPw';
+
+var map;
+var drawingManager;
+var placeIdArray = [];
+var polylines = [];
+var snappedCoordinates = [];
+
+// TODO: Kaung updated this function for current location***
+function initialize() {
+  x = navigator.geolocation;
+  x.getCurrentPosition (success, failure);
+
+  // if current location succeeds
+  function success (position) {
+    // testing : -75.157931, 39.945680
+    var curLat = position.coords.latitude;
+    var curLong = position.coords.longitude;
+    var coords = new google.maps.LatLng(curLat, curLong);
+
+    var mapOptions = {
+      zoom: 16,
+      // center at currenct coordinates
+      center: coords
+    };
+    map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+    // SHOW current location on map
+    // Inner circle of current location
+    const innericon = {
+      path: "M-20,0a20,20 0 1,0 40,0a20,20 0 1,0 -40,0",
+      fillColor: "green",
+      fillOpacity: 1,
+      strokeWeight: 2,
+      strokeColor: "yellow",
+      rotation: 0,
+      scale: 0.4,
+    };
+    var innermarker = new google.maps.Marker({
+      map:map,
+      position:coords,
+      icon: innericon,
+      title: "my Current location",
+      draggable: false,
+      
+    });
+    // Outer circle of current lcation
+    const outericon = {
+      path: "M-20,0a20,20 0 1,0 40,0a20,20 0 1,0 -40,0",
+      fillColor: "green",
+      fillOpacity: 0.1,
+      strokeWeight: 0.1,
+      rotation: 0,
+      scale: 2.5,
+    };
+    var outermarker = new google.maps.Marker({
+      map:map,
+      position:coords,
+      icon: outericon,
+      title: "my Current location",
+      draggable: false,
+    });
+  // Manually updated for cuurent location ENDS here-------------------------
+    
+  // Adds a Places search box. Searching for a place will center the map on that
+  // location.
+    map.controls[google.maps.ControlPosition.RIGHT_TOP].push(
+        document.getElementById('bar'));
+    var autocomplete = new google.maps.places.Autocomplete(
+        document.getElementById('autoc'));
+    autocomplete.bindTo('bounds', map);
+    autocomplete.addListener('place_changed', function() {
+      var place = autocomplete.getPlace();
+      if (place.geometry.viewport) {
+        map.fitBounds(place.geometry.viewport);
+      } else {
+        map.setCenter(place.geometry.location);
+        map.setZoom(17);
+      }
+    });
+
+    // Enables the polyline drawing control. Click on the map to start drawing a
+    // polyline. Each click will add a new vertice. Double-click to stop drawing.
+    drawingManager = new google.maps.drawing.DrawingManager({
+      drawingMode: google.maps.drawing.OverlayType.POLYLINE,
+      drawingControl: true,
+      drawingControlOptions: {
+        position: google.maps.ControlPosition.TOP_CENTER,
+        drawingModes: [
+          google.maps.drawing.OverlayType.POLYLINE
+        ]
+      },
+      polylineOptions: {
+        strokeColor: "black",
+        strokeWeight: 1.5,
+        strokeOpacity: 0.6,
+        sclae: 15
+      }
+    });
+    drawingManager.setMap(map);
+
+    // Snap-to-road when the polyline is completed.
+    drawingManager.addListener('polylinecomplete', function(poly) {
+      var path = poly.getPath();
+      polylines.push(poly);
+      placeIdArray = [];
+      runSnapToRoad(path);
+    });
+
+    // Clear button. Click to remove all polylines.
+    document.getElementById('clear').addEventListener('click', function(event) {
+      event.preventDefault();
+      for (var i = 0; i < polylines.length; ++i) {
+        polylines[i].setMap(null);
+      }
+      polylines = [];
+      return false;
+    });
+  }
+
+  // if current location fails
+  function failure () {
+    alert("Sorry, your browser does not allow to get current location!");
+  }
+
+} 
+//-----------------------------------------------------------------------------
+
+
+// Snap a user-created polyline to roads and draw the snapped path
+function runSnapToRoad(path) {
+  var pathValues = [];
+  for (var i = 0; i < path.getLength(); i++) {
+    pathValues.push(path.getAt(i).toUrlValue());
+  }
+
+  $.get('https://roads.googleapis.com/v1/snapToRoads', {
+    interpolate: true,
+    key: apiKey,
+    path: pathValues.join('|'),
+    // Kaung updated travel mode to ---> WALKING
+    travelMode: google.maps.TravelMode.WALKING
+  }, function(data) {
+    processSnapToRoadResponse(data);
+    drawSnappedPolyline();
+  });
+}
+//-----------------------------------------------------------------------------
+
+// Store snapped polyline returned by the snap-to-road service.
+function processSnapToRoadResponse(data) {
+  snappedCoordinates = [];
+  placeIdArray = [];
+  for (var i = 0; i < data.snappedPoints.length; i++) {
+    var latlng = new google.maps.LatLng(
+        data.snappedPoints[i].location.latitude,
+        data.snappedPoints[i].location.longitude);
+    snappedCoordinates.push(latlng);
+    placeIdArray.push(data.snappedPoints[i].placeId);
+  }
+}
+//-----------------------------------------------------------------------------
+
+// Draws the snapped polyline (after processing snap-to-road response).
+function drawSnappedPolyline() {
+  var snappedPolyline = new google.maps.Polyline({
+    path: snappedCoordinates,
+    strokeColor: "green",
+    strokeWeight: 4.5,
+    strokeOpacity: 0.8,
+  });
+
+  snappedPolyline.setMap(map);
+  polylines.push(snappedPolyline);
+}
+//-----------------------------------------------------------------------------
+
+$(window).load(initialize);
+    </script>
+  </head>
+
+  <body>
+    <div id="map"></div>
+    <div id="bar">
+      <p class="auto"><input type="text" id="autoc"/></p>
+      <p><a id="clear" href="#">Click here</a> to clear map.</p>
+    </div>
+  </body>
+</html>
