@@ -47,28 +47,10 @@ body, html {
 h1.describe {
     margin-left: 100px;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 100px;
-    font-style: italic;
-    color: white;
-}
-
-button.start {
-    margin-left: 400px;
-    color: white;
-    font-family: Helvetica;
-    background-color: transparent;
-    border: 1px solid white;
-    border-radius: 7px;
     font-size: 50px;
-    font-weight: bold;
-    text-align: center;
+    color: white;
 }
 
-.start:hover {
-    border: 0px;
-    color: yellow;
-    background-color: black;
-}
 
 /* navigation bar style starts here */
 img.logo1 {

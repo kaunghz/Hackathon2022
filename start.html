@@ -13,36 +13,58 @@
         <meta charset="utf-8">
         <link rel="stylesheet" href="start.css">
         <title>Hackathon22 Home</title>
-        <link rel="icon" href="pics/head_logo.jpg">
+        <link rel="icon" href="pics/logo.png">
     </head>
-    <!--BODY starts-->
-    <body style="background-color:#2b2d2d;">
-        <header>
-            <div class="logo-container">
-                <img src="pics/runlogo.jpeg" class="logo" alt="logo">
-            </div>
+    <body>
+        <div class="topleftpane">
+            <a href="./index.html"><img class="logo1" src="pics/logo.png"></a>
+        </div>
+        <div class="toprightpane">
             <nav>
                 <ul class="nav_links">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Description</a></li>
+                    <li><a class="navi" href="#">About us</a></li>
+                    <li><a class="navi" href="#">Map</a></li>
+                    <li><a class="navi" href="./description.html">Description</a></li>
                 </ul>
             </nav>
-            <a class="cta" href="#"><button>Pick A Shape</button></a>
-        </header>
-        <input type = "image" class="button-10" role="button" src = "pics/microphones.jpeg" height="40" width="40"></input>
-        <div class="titleContainer">
-            <p class="middleText">Easy</p>
-            <p class="middleText">Difficult</p>
         </div>
-        <table class = "table">
-            <tr>
-                <td> <img src = "pics/Blue.png" class="hovering" height="250" width="250"> </td>
-                <td> <img src = "pics/triangles.png" class="hovering" height="250" width="250"> </td>
-                <td> <img src = "pics/circle.png" class="hovering" height="300" width="300"> </td>
-                <td> <img src = "pics/rectangle.jpeg" class="hovering" height="150" width="300"> </td>
-            </tr>
-        </table>
-        
+        <div class="middlepane">
+            <center>
+                <h2 class="mic">
+                    Say the shape you want to run run today
+                </h2>
+                <div class="microphone" title="click on the microphone">
+                    <span class="circle"></span>
+                </div>
+            </center>
+        </div>
+        <div class="downleftpane">
+            <table class = "table">
+                <tr>
+                    <center>
+                        <h3 class="txt">Easy Shapes</h3>
+                    </center>
+                </tr>
+                <tr>
+                    <td> <img src="pics/logo.png" class="hovering" height="150" width="150"> </td>
+                    <td> <img src="pics/logo.png" class="hovering" height="150" width="150"> </td>
+                </tr>
+            </table>
+        </div>
+        <div class="downrightpane">
+            <table class = "table">
+                <tr>
+                    <center>
+                        <h3 class="txt">Advanced animal Shapes</h3>
+                    </center>
+                </tr>
+                <tr>
+                    <td> <img src="pics/logo.png" class="hovering" height="150" width="150"> </td>
+                    <td> <img src="pics/logo.png" class="hovering" height="150" width="150"> </td>
+                </tr>
+            </table>
+        </div>
+
         
     </body>
 </html>

@@ -2,45 +2,64 @@
 CSS for home page - Adam
 */
 
-
-.table {
-  margin-top: 10%;
-  margin-left: auto;
-  margin-right: auto;
+/* navigation bar style starts here */
+body {
+  background-color: #2d2d2d;
+  position: fixed;
+  margin-top: 40px;
 }
 
-.titleContainer {
-  display: inline-block;
-  height: 10px;
-  width: 25%;
-  text-align: center;
+body, html {
+  width: 100%;
+  height: 100%;
+  margin: 0;
 }
 
-.middleText {
-  margin-right: 20%;
-  font-family: "Montserrat", "sans-serif";
-  font-weight: 500;
-  font-size: 60px;
-  color: #edf0f1;
+.topleftpane {
+  width: 30%;
+  height: 20%;
+  float: left;
+  border-collapse: collapse;
+  background-color: black;
 }
 
-.headerText {
-  font-family: "Montserrat", "sans-serif";
-  font-weight: 500;
-  font-size: 16px;
-  color: #edf0f1;
-  text-decoration: none;
-  text-align: center;
+.toprightpane {
+  width: 70%;
+  height: 20%;
+  float: right;
+  border-collapse: collapse;
+  background-color: black;
 }
 
-.logo-container {
-  margin-right: auto;
+.middlepane {
+  width: 100%;
+  height: 30%;
+  float: left;
+  position: relative;
+  border-collapse: collapse;
 }
 
-.logo {
-  height: 100;
-  width: 100;
-  cursor: pointer;
+.downleftpane {
+  width: 50%;
+  height: 50%;
+  position: relative;   
+  float: left;
+  border-collapse: collapse;
+}
+
+.downrightpane {
+  width: 50%;
+  height: 5 0%;
+  position: relative;
+  float: right;
+  border-collapse: collapse;
+}
+
+img.logo1 {
+  margin-top: 10px;
+  padding-left: 100px;
+  height: 150px;
+  width: 250px;
 }
 
 .nav_links {
@@ -57,9 +76,121 @@ CSS for home page - Adam
 }
 
 .nav_links li a:hover {
-  color: #0088a9;
+  color: yellow;
 }
 
+li, a.navi {
+  margin-top: 10px;
+  float: right;
+  padding: 25px;
+  font-family: Helvetica;
+  font-weight: bold;
+  font-size: 25px;
+  color: #edf0f1;
+  text-decoration: none;
+}
+/* navigation bar style ends here */
+
+.table {
+  margin-top: 10%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table td {
+  width: 250px;
+}
+
+.hovering:hover {
+  transform: scale(1.25);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  transition: all 0.4s ease;
+  -webkit-transition: all 0.4s ease;
+}
+
+h2.mic {
+  font-family: Helvetica;
+  font-size: 35px;
+  font-weight: bolder;
+  color: white;
+}
+
+h3.txt {
+  font-family: Helvetica;
+  font-size: 30px;
+  font-weight: bold;
+  color: black; 
+}
+
+/*microphone*/
+*,*:before,*:after{
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+	font-size:100%;
+	margin:0;
+	padding:0;
+}
+
+.icon{
+	position:absolute;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	margin:auto;
+	display:block;
+}
+
+/*microphone logo*/
+.microphone {
+  margin-top: 30px;
+  background-color: white;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.circle {
+  width: 23px;
+  height: 45px;
+  background-color: #2d2d2d;
+  position: absolute;
+  border-radius: 20px;
+  top: 130px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.circle::before {
+  content: ')';
+  position: absolute;
+  bottom: -43px;
+  left: 8px;
+  transform: rotate(90deg);
+  font: 50px cursive;
+}
+
+.circle::after {
+  content: '|';
+  position: absolute;
+  bottom: -35px;
+  left: 8px;
+  font-weight: bolder;
+  font: 20px cursive;
+}
+
+.microphone:hover {
+  background-color: black;
+}
+
+.microphone:hover > .circle {
+  background-color: yellow;
+  color: yellow;
+}
+
+/*
 button {
   padding: 9px 25px;
   background-color: rgba(0, 136, 169, 1);
@@ -73,24 +204,6 @@ button:hover {
   background-color: rgba(0, 136, 169, 0.8);
 }
 
-li,
-a,
-button {
-  font-family: "Montserrat", "sans-serif";
-  font-weight: 500;
-  font-size: 16px;
-  color: #edf0f1;
-  text-decoration: none;
-}
-
-header {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 30px 10%;
-}
-
-/* CSS */
 .button-10 {
   display: flex;
   flex-direction: column;
@@ -114,15 +227,4 @@ header {
 .button-10:hover {
   background-color: white;
 }
-
-.hovering:hover {
-  transform: scale(1.5);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  transition: all 0.4s ease;
-  -webkit-transition: all 0.4s ease;
-}
-
-.titleText {
-  font-family: "Roboto";
-  color: "white";
-}
+*/
