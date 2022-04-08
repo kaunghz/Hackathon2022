@@ -18,7 +18,7 @@ body, html {
     height: 20%;
     float: left;
     border-collapse: collapse;
-    background-color: red;
+    background-color: black;
 }
 
 .toprightpane {
@@ -34,7 +34,6 @@ body, html {
     height: 80%;
     float: left;
     border-collapse: collapse;
-    background-color: pink;
 }
 
 .downrightpane {
@@ -43,7 +42,6 @@ body, html {
     position: relative;
     float: right;
     border-collapse: collapse;
-    background-color: blue;
 }
 
 h1.describe {
