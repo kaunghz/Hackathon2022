@@ -15,16 +15,16 @@ var content = ''
 recognition.continuous = true
 
 recognition.onstart = function () {
-    instructions.text ("Listening to the keyword of the shape...")
+    instructions.text ("Listening to the keyword and the distance...")
 }
 
 recognition.onspeechend = function () {
-    instructions.text ("Say the keyword only, Try again!")
+    instructions.text ("Say the keyword and the distance only, Try again!")
 
 }
 
 recognition.onerror = function () {
-    instructions.text ("Voice Recognition ERROR!")
+    instructions.text ("No activity detected!")
 }
 
 recognition.onresult = function (event) {

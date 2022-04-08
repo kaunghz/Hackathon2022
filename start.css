@@ -110,7 +110,7 @@ table td {
 
 p.mic {
   font-family: Helvetica;
-  font-size: 35px;
+  font-size: 25px;
   font-weight: bolder;
   color: white;
 }
@@ -174,7 +174,7 @@ h2.keyword {
   background-color: #292826;
   position: absolute;
   border-radius: 20px;
-  top: 130px;
+  top: 120px;
   left: 50%;
   transform: translate(-50%, -50%);
 }
