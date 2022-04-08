@@ -4,7 +4,7 @@ CSS for home page - Adam
 
 /* navigation bar style starts here */
 body {
-  background-color: #2d2d2d;
+  background-color: #292826;
   position: fixed;
   margin-top: 40px;
 }
@@ -49,7 +49,7 @@ body, html {
 
 .downrightpane {
   width: 50%;
-  height: 5 0%;
+  height: 50%;
   position: relative;
   float: right;
   border-collapse: collapse;
@@ -76,7 +76,7 @@ img.logo1 {
 }
 
 .nav_links li a:hover {
-  color: yellow;
+  color: #f9d342;
 }
 
 li, a.navi {
@@ -149,6 +149,15 @@ h3.txt {
   font-weight: bold;
 }
 
+h2.keyword {
+  margin-top: 30px;
+  font-family: Helvetica;
+  font-size: 20px;
+  font-weight: bold;
+  margin-left: 10%;
+  color: #f9d342;
+}
+
 /*microphone logo*/
 .microphone {
   margin-top: 30px;
@@ -162,7 +171,7 @@ h3.txt {
 .circle {
   width: 23px;
   height: 45px;
-  background-color: #2d2d2d;
+  background-color: #292826;
   position: absolute;
   border-radius: 20px;
   top: 130px;
@@ -193,45 +202,6 @@ h3.txt {
 }
 
 .microphone:hover > .circle {
-  background-color: yellow;
-  color: yellow;
+  background-color: #f9d342;
+  color: #f9d342;
 }
-
-/*
-button {
-  padding: 9px 25px;
-  background-color: rgba(0, 136, 169, 1);
-  border: none;
-  border-radius: 50px;
-  cursor: pointer;
-  transition: all 0.3 ease 0s;
-}
-
-button:hover {
-  background-color: rgba(0, 136, 169, 0.8);
-}
-
-.button-10 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 6px 14px;
-  font-family: -apple-system, BlinkMacSystemFont, "Roboto", sans-serif;
-  border-radius: 6px;
-  border: none;
-
-  display: block;
-  margin-right: auto;
-  margin-left: auto;
-  color: #fff;
-  background: linear-gradient(180deg, #4b91f7 0%, #367af6 100%);
-  background-origin: border-box;
-  box-shadow: 0px 0.5px 1.5px rgba(54, 122, 246, 0.25),
-    inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2);
-  user-select: none;
-}
-
-.button-10:hover {
-  background-color: white;
-}
-*/
