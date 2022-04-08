@@ -1,0 +1,181 @@
+body {
+    background-color: #292826;
+    position: relative;
+    margin-top: 40px;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+.border{
+    border: black;
+    border-radius: 5%;
+    
+}
+
+.communityEvents{
+    border: #f9d342;
+    border-style: dotted;
+    position:absolute;
+    display: inline-block;
+}
+
+.communityEvents2{
+    border: #f9d342;
+    border-style: dotted;
+    position:absolute;
+    display: inline-block;
+    top:100%;
+}
+
+.communityPics{
+    height:100%;
+    width: 50%;
+    border-right-color: black;
+    border-right-width: 5px;
+    border-right-style:solid;
+    display: inline-block;
+    position:relative;
+}
+
+p.communityText{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    color: white;
+    display:inline-block
+}
+
+p.mainText{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+    color: white;
+}
+
+#footer {
+    position: fixed;
+    padding: 10px 10px 0px 10px;
+    bottom: 0;
+    bottom:0;
+    width:20%;
+    height:20%;
+    margin-left:40%;
+    margin-bottom: 3%;
+}
+
+
+.topleftpane {
+    width: 30%;
+    height: 20%;
+    float: left;
+    border-collapse: collapse;
+    background-color: black;
+}
+
+.toprightpane {
+    width: 70%;
+    height: 20%;
+    float: right;
+    border-collapse: collapse;
+    background-color: black;
+}
+
+.downleftpane {
+    width: 33%;
+    margin-top: 3%;
+    float: left;
+    border-collapse: collapse;
+    border: #f9d342;
+    border-style: dotted;
+    margin-left: 3%;
+    position: relative;
+    box-sizing: content-box;
+}
+
+.downrightpane {
+    height: 60%;
+    width: 58%;
+    margin-top: 3%;
+    margin-right: 3%;
+    position: relative;
+    float:right;
+}
+
+h1.describe {
+    margin-left: 10%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 50px;
+    color: white;
+    margin-right: 10%;
+    
+}
+
+.communityText{
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 3%;
+    font-size: 28px;
+    color: white;
+}
+
+/* navigation bar style starts here */
+img.logo1 {
+    margin-top: 10px;
+    padding-left: 100px;
+    height: 150px;
+    width: 150px;
+}
+
+.nav_links {
+    list-style: none;
+}
+
+.nav_links li {
+    display: inline-block;
+    padding: 0px 20px;
+}
+
+.nav_links li a {
+    transition: all 0.3 ease 0s;
+}
+
+.nav_links li a:hover {
+    color: #f9d342;
+}
+
+li, a.navi {
+    margin-top: 10px;
+    float: right;
+    padding: 25px;
+    font-family: Helvetica;
+    font-weight: bold;
+    font-size: 25px;
+    color: #edf0f1;
+    text-decoration: none;
+}
+  
+/* navigation bar style ends here */
+
+/* Scroll bar */
+img.logo2 {
+    height: 200px;
+    width: auto;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+/*Scroll bar ends*/
