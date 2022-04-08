@@ -55,7 +55,7 @@ recognition.onresult = function (event) {
         else
             window.location.href = 'map.html#' + content[0];
     }   else {
-        if (content[0] == "free") {
+        if (content[0] == "custom") {
             window.location.href = 'map.html';
         }
     }
