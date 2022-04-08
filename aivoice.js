@@ -1,3 +1,6 @@
+/// AI Voice Recognition
+/// Author - Kaung Htoo Zan
+/// code followed on a youtube tutorial
 
 var SpeechRecognition = window.webkitSpeechRecognition
 
@@ -38,7 +41,13 @@ recognition.onresult = function (event) {
         content=''
         textbox.val(content)
         recognition.stop();
-    }
+    }   
+    /// Alim*******
+    // TO-DO:
+
+    // my idea is navigating to your shape function based on the content
+    // content is the text that user says
+    // if (content == "square") { navigate to square map } ....
 }
 
 // start id click
