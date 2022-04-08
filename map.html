@@ -16,6 +16,7 @@
     <meta charset="utf-8">
     <title>Hackathon22 Map</title>
     <link rel="icon" href="pics/head_logo.jpg">
+    
     <style>
       html, body, #map {
         height: 100%;
@@ -79,7 +80,170 @@ function initialize() {
     var mapOptions = {
       zoom: 16,
       // center at currenct coordinates
-      center: coords
+      center: coords,
+      // night theme
+      styles: 
+      [
+        {
+          "elementType": "geometry",
+          "stylers": [
+            {
+              "color": "#242f3e"
+            }
+          ]
+        },
+        {
+          "elementType": "labels.text.fill",
+          "stylers": [
+            {
+              "color": "#746855"
+            }
+          ]
+        },
+        {
+          "elementType": "labels.text.stroke",
+          "stylers": [
+            {
+              "color": "#242f3e"
+            }
+          ]
+        },
+        {
+          "featureType": "administrative.locality",
+          "elementType": "labels.text.fill",
+          "stylers": [
+            {
+              "color": "#d59563"
+            }
+          ]
+        },
+        {
+          "featureType": "poi",
+          "elementType": "labels.text.fill",
+          "stylers": [
+            {
+              "color": "#d59563"
+            }
+          ]
+        },
+        {
+          "featureType": "poi.park",
+          "elementType": "geometry",
+          "stylers": [
+            {
+              "color": "#263c3f"
+            }
+          ]
+        },
+        {
+          "featureType": "poi.park",
+          "elementType": "labels.text.fill",
+          "stylers": [
+            {
+              "color": "#6b9a76"
+            }
+          ]
+        },
+        {
+          "featureType": "road",
+          "elementType": "geometry",
+          "stylers": [
+            {
+              "color": "#38414e"
+            }
+          ]
+        },
+        {
+          "featureType": "road",
+          "elementType": "geometry.stroke",
+          "stylers": [
+            {
+              "color": "#212a37"
+            }
+          ]
+        },
+        {
+          "featureType": "road",
+          "elementType": "labels.text.fill",
+          "stylers": [
+            {
+              "color": "#9ca5b3"
+            }
+          ]
+        },
+        {
+          "featureType": "road.highway",
+          "elementType": "geometry",
+          "stylers": [
+            {
+              "color": "#746855"
+            }
+          ]
+        },
+        {
+          "featureType": "road.highway",
+          "elementType": "geometry.stroke",
+          "stylers": [
+            {
+              "color": "#1f2835"
+            }
+          ]
+        },
+        {
+          "featureType": "road.highway",
+          "elementType": "labels.text.fill",
+          "stylers": [
+            {
+              "color": "#f3d19c"
+            }
+          ]
+        },
+        {
+          "featureType": "transit",
+          "elementType": "geometry",
+          "stylers": [
+            {
+              "color": "#2f3948"
+            }
+          ]
+        },
+        {
+          "featureType": "transit.station",
+          "elementType": "labels.text.fill",
+          "stylers": [
+            {
+              "color": "#d59563"
+            }
+          ]
+        },
+        {
+          "featureType": "water",
+          "elementType": "geometry",
+          "stylers": [
+            {
+              "color": "#17263c"
+            }
+          ]
+        },
+        {
+          "featureType": "water",
+          "elementType": "labels.text.fill",
+          "stylers": [
+            {
+              "color": "#515c6d"
+            }
+          ]
+        },
+        {
+          "featureType": "water",
+          "elementType": "labels.text.stroke",
+          "stylers": [
+            {
+              "color": "#17263c"
+            }
+          ]
+        }
+      ],
     };
     map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
@@ -87,10 +251,10 @@ function initialize() {
     // Inner circle of current location
     const innericon = {
       path: "M-20,0a20,20 0 1,0 40,0a20,20 0 1,0 -40,0",
-      fillColor: "green",
+      fillColor: "#f9d342",
       fillOpacity: 1,
       strokeWeight: 2,
-      strokeColor: "yellow",
+      strokeColor: "green",
       rotation: 0,
       scale: 0.4,
     };
@@ -105,7 +269,7 @@ function initialize() {
     // Outer circle of current lcation
     const outericon = {
       path: "M-20,0a20,20 0 1,0 40,0a20,20 0 1,0 -40,0",
-      fillColor: "green",
+      fillColor: "#f9d342",
       fillOpacity: 0.1,
       strokeWeight: 0.1,
       rotation: 0,
@@ -213,7 +377,7 @@ function runSnapToRoad(path) {
     travelMode: google.maps.TravelMode.WALKING
   }, function(data) {
     processSnapToRoadResponse(data);
-    drawSnappedPolyline("green");
+    drawSnappedPolyline("#f9d342");
   });
 }
 function runSnapToRoad_shape(path, color) {
@@ -335,7 +499,7 @@ function updateShape() {
   for (var i = 0; i < resultPolylines.length; ++i) {
     resultPolylines[i].setMap(null);
   }
-  runSnapToRoad_shape(shapeCoordinates, "green");
+  runSnapToRoad_shape(shapeCoordinates, "#f9d342");
 }
 
 $(document).ready(function() {
@@ -396,7 +560,7 @@ function drawShape(name, dist) {
   // lineCoordinates = shapeCoordinates;
   // lastPoint = lineCoordinates[0];
   // runSnapToRoad_line(1, "red");
-  runSnapToRoad_shape(shapeCoordinates, "green");
+  runSnapToRoad_shape(shapeCoordinates, "#f9d342");
   squarePolyline = new google.maps.Polyline({
     path: shapeCoordinates,
     strokeColor: 'grey',
@@ -436,12 +600,12 @@ $(window).load(initialize);
     <div id="map"></div>
     <div id="bar">
       <!-- <p class="auto"><input type="text" id="autoc"/></p> -->
-      <p style="font-size: 20px; text-decoration: none; font-family: Helvetica; color: black; font-weight: bolder;"><a id="clear" href="#" style="font-size: 20px; text-decoration: none; font-family: Helvetica; color: green;">Click here</a> to clear shape</p>
+      <p style="font-size: 20px; text-decoration: none; font-family: Helvetica; color: black; font-weight: bolder;"><a id="clear" href="#" style="font-size: 20px; text-decoration: none; font-family: Helvetica; color: green;">Clear</a> the shape</p>
       <!-- <button onclick="drawShape('square', 0.05)">square</button>
       <button onclick="drawShape('cross', 0.05)">cross</button>
       <button onclick="drawShape('turtle', 0.05)">turtle</button>
       <br> -->
-      <a id="rotate">Rotate</a>
+      <p id="rotate" style="font-size: 30px; text-decoration: none; font-family: Helvetica; color: green; background-color: #242f3e; font-weight: bold; ">Rotate</p>
     </div>
   </body>
 </html>
