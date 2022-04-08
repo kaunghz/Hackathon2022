@@ -2,7 +2,7 @@
   !DOCTYPE
 
   Team member : Bao, Alim, Kaung, Adam
-  Author : Adam (UI) + Bao (AI)
+  Author : Kaung + Adam (UI) + Bao (AI)
   Start page of web
   Date : 4/6/2022
 -->
@@ -23,19 +23,20 @@
             <nav>
                 <ul class="nav_links">
                     <li><a class="navi" href="#">About us</a></li>
-                    <li><a class="navi" href="#">Map</a></li>
+                    <li><a class="navi" href="./map.html">Map</a></li>
                     <li><a class="navi" href="./description.html">Description</a></li>
                 </ul>
             </nav>
         </div>
         <div class="middlepane">
             <center>
-                <h2 class="mic">
-                    Say the shape you want to run run today
-                </h2>
-                <div class="microphone" title="click on the microphone">
+                <p id="instructions" class="mic">
+                    What route shape do you want to try today?
+                </p>
+                <p id="begin" class="microphone" title="click on the microphone">
                     <span class="circle"></span>
-                </div>
+                </p>
+                <textarea id="textbox" class="aibox" rows="1" cols="10"></textarea>
             </center>
         </div>
         <div class="downleftpane">
@@ -64,7 +65,7 @@
                 </tr>
             </table>
         </div>
-
-        
     </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="aivoice.js"></script>
 </html>

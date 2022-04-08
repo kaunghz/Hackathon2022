@@ -80,7 +80,7 @@ img.logo1 {
 }
 
 li, a.navi {
-  margin-top: 10px;
+  margin-top: 18px;
   float: right;
   padding: 25px;
   font-family: Helvetica;
@@ -108,7 +108,7 @@ table td {
   -webkit-transition: all 0.4s ease;
 }
 
-h2.mic {
+p.mic {
   font-family: Helvetica;
   font-size: 35px;
   font-weight: bolder;
@@ -132,7 +132,7 @@ h3.txt {
 	padding:0;
 }
 
-.icon{
+.icon {
 	position:absolute;
 	top:0;
 	left:0;
@@ -140,6 +140,13 @@ h3.txt {
 	bottom:0;
 	margin:auto;
 	display:block;
+}
+
+.aibox {
+  margin-top: 30px;
+  font-family: Helvetica;
+  font-size: 25px;
+  font-weight: bold;
 }
 
 /*microphone logo*/
