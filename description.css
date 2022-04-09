@@ -91,6 +91,8 @@ li, a.navi {
 /* navigation bar style ends here */
 
 img.logo2 {
-    height: 200px;
+    padding: 50px;
+    margin-left: 50px;
+    height: 150px;
     width: auto;
 }
